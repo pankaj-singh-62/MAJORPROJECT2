@@ -1,0 +1,210 @@
+
+<style>
+  .search-btn {
+    background-color:#683193;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem;
+  }
+  .search-btn:hover {
+    background-color: #ac47fa;
+    color: #fff;
+  }
+  .search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem;
+  }
+
+  .checkboxtoggler{
+    width: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    cursor: pointer;
+  }
+
+  .line-1{
+    background: #683193;
+    height: 0.3rem;
+    border-radius: 10em;
+    transition-duration: 500ms;
+
+  }
+
+  .line-2{
+    background: #683193;
+    height: 0.3rem;
+    border-radius: 10em;
+    transition-duration: 500ms;
+  }
+
+  .line-3{
+    background: #683193;
+    height: 0.3rem;
+    border-radius: 10em;
+    transition-duration: 500ms;
+
+  }
+
+  #toggleChecker {
+    height: 3em;
+    width: 100%;
+    display: none;
+  }
+
+  #toggleChecker:checked + #togglerLable .checkboxtoggler 
+  .line-1 {
+
+    -webkit-transform: rotate(45deg) translateY(0.7em) 
+      translateX(0.7em); 
+      -ms-transform: rotate(45deg) translateY(0.7em) 
+      translateX(0.7em); 
+      transform: rotate(45deg) translateY(0.7em) 
+      translateX(0.7em); 
+  }
+ 
+ #toggleChecker:checked + #togglerLable .checkboxtoggler 
+ .line-2 {
+
+   -webkit-transform: rotate(-45deg) translateY(0em) 
+   translateX(0.1em); 
+   -ms-transform: rotate(-45deg) translateY(0em) 
+   translateX(0.1em); 
+   transform: rotate(-45deg) translateY(0em) 
+   translateX(0.1em); 
+  }
+
+ #toggleChecker:checked + #togglerLable .checkboxtoggler 
+ .line-3 {
+
+  transform: scaleX(0);
+  transform-origin:left;
+ }
+
+
+.nav-profile {
+
+  position: absolute;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+  top: 3rem;
+  right: 1.2rem;
+  align-items: center !important;
+  min-height: 8rem;
+  min-width: 10rem;
+  padding: 1.5rem;
+  background-color: white;
+  border: 1px solid (rgba, 0, 0, 0.201);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  gap: 0.5rem;
+ 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+}
+
+.nav-profile a:hover {
+
+color: #683193;
+
+}
+
+
+</style>
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings"><img  src="https://res.cloudinary.com/danoxgcb8/image/upload/v1698837544/wanderlust_DEV/namaste_1_scnrpm.png" width="41px" style="margin-right:12px; margin-bottom: 10px;" alt="logo"><b style="display: inline-block; color: #683193; font-size: 1.5rem; line-height: 1.2rem; margin-top: 20px; font-family:Arial, Helvetica, sans-serif;">&nbsp;StaySmart</b></a>
+        <button class="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNavAltMarkup" 
+        >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <!-- <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Explore</a>
+        </div> -->
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex needs-validation" role="search" id="searchBox" action="/listings/search" method="get">
+            <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" name="q" aria-label="Search" id="mySearchInput"/>
+            <button class="btn search-btn" id="search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+        </div>
+        
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link " href="/listings/new"><b>StaySmart Your Home</b> </a>
+        </div>
+         
+        <div class="ms-auto">
+          <input id="toggleChecker" type="checkbox">
+          <label id="togglerLable" for="toggleChecker">
+          <div class="checkboxtoggler ">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-3"></div>
+          </div>
+         </label>
+        </div>
+        
+        <div class="navbar-nav mr-auto">
+          <div class="nav-profile" style="visibility: hidden; opacity: 0;">
+            
+            <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+            
+
+            
+            <a class="nav-link" href="/logout"><b>Log out</b></a>
+           
+           
+
+          </div>
+               
+             
+           
+
+        </div>
+         
+      </div>
+    </div>
+</nav>
+
+<script>
+  const hamMenu = document.querySelector("#toggleChecker");
+  const profileMenu = document.querySelector(".nav-profile");
+
+  hamMenu.addEventListener("click" , () =>{
+    if(profileMenu.style.visibility != "visible"){
+      profileMenu.style.visibility = "visible";
+      profileMenu.style.opacity = 1;
+       
+    }else{
+      profileMenu.style.visibility ="hidden";
+      profileMenu.style.opacity = 0;
+    }
+  });
+
+  // Click search input box then add box-shadow---------
+const searchInputBox = document.querySelectorAll("#mySearchInput");
+const box = document.querySelectorAll(".nav-search");
+for (const searchInput of searchInputBox) {
+	searchInput.addEventListener("input", function () {
+		for (const searchBox of box) {
+			searchBox.style.boxShadow =
+				"inset 0px 6px 5px rgba(0, 0, 0, 0.700)";
+			setTimeout(() => {
+				searchBox.style.boxShadow =
+					"inset 0px 2px 3px rgba(0, 0, 0, 0.800)";
+			}, 100);
+		}
+	});
+}
+</script>

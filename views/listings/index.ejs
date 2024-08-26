@@ -1,0 +1,459 @@
+<% layout("/layouts/boilerplate") %> 
+ 
+ 
+
+<style>
+  .filters-main {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+     
+
+  #filters {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    align-items: center;
+    height: 90px;
+    position: relative;
+    margin: 5px 2px 0px 2px;
+  }
+
+  #filters a{
+        color: black;
+        text-decoration: none;
+  }
+
+  @media (max-width:768px) {
+    #filters  a {
+        margin: 0px .95rem;
+    }
+  }
+
+  @media (max-width:425px) {
+    #filters  a {
+        margin: 0px .65rem;
+    }
+  }
+
+  #slideButton {
+    cursor: pointer;
+    position: sticky;
+    background-color: rgb(128, 128, 128);
+    color: rgb(255, 255, 255);
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75rem;
+    padding: 10px;
+    z-index: 100;
+    transition: all .2s ease-out;
+}
+
+#slideButton:active {
+    transform: scale(1.2);
+    background-color: black;
+}
+
+#slideButton > i {
+    font-size: 1rem;
+}
+
+.left_img_button {
+    left: 0px;
+}
+
+.right_img_button {
+    right: 0px;
+}
+
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+     .filter{
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: 0.7;
+    }
+
+    .filter:hover{
+        opacity: 1 !important;
+        cursor: pointer;
+        transform: scale(1.05) !important;
+        transition: 100ms easw all !important;
+    }
+
+    .filter p{
+        font-size: 0.8rem;
+    }
+
+    .tax-info{
+        display: none;
+    }
+
+    .tax-toggle{
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        /* margin-left: 3rem; */
+        display: flex;
+        min-width: 250px;
+        width: content;
+        margin-top: 0.8rem;
+         
+        align-items: center;
+
+    }
+    .selected-filter
+    {
+        border-bottom: 3px solid #683193;
+    }
+
+     
+
+
+   
+ 
+</style>
+<div class="filters-main"> 
+<div id="filters">
+   
+    <div class="left_img_button" id="slideButton" style="display: none;">
+      <i class="fa-solid fa-angle-left"></i>
+    </div>
+    <a href="/listings/filter/1">
+      <div class="filter" id="filter-trending" data-category="trending">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+    </a>
+    <a href="/listings/filter/2">
+      <div class="filter" id="filter-rooms" data-category="Rooms">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+    </a>
+    <a href="/listings/filter/3">
+      <div class="filter" id="filter-iconic-cities" data-category="Iconic-Cities">
+        <div><i class="fa-solid fa-city"></i></div>
+        <p>Cities</p>
+      </div>
+    </a>
+    <a href="/listings/filter/4">
+      <div class="filter" id="filter-mountains" data-category="Mountains">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+    </a>
+    <a href="/listings/filter/5">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Mansions</p>
+      </div>
+    </a>
+    <a href="/listings/filter/6">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach</p>
+      </div>
+    </a>
+    <a href="/listings/filter/7">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-tents"></i></div>
+        <p>Camping</p>
+      </div>
+    </a>
+    <a href="/listings/filter/8">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-person-skiing"></i></div>
+        <p>Ski</p>
+      </div>
+    </a>
+    <a href="/listings/filter/9">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-house-chimney-window"></i></div>
+        <p>Farms</p>
+      </div>
+    </a>
+    <a href="/listings/filter/10">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+    </a>
+    <a href="/listings/filter/11">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-building"></i></div>
+        <p>Design</p>
+      </div>
+    </a>
+    <a href="/listings/filter/12">
+      <div class="filter" id="filter-trending" data-category="trending">
+        <div><i class="fa-solid fa-house-chimney-window"></i></div>
+        <p>Caves</p>
+      </div>
+    </a>
+    <a href="/listings/filter/13">
+      <div class="filter" id="filter-rooms" data-category="Rooms">
+        <div><i class="fa-solid fa-tree"></i></div>
+        <p>Tree</p>
+      </div>
+    </a>
+    <a href="/listings/filter/14">
+      <div class="filter" id="filter-iconic-cities" data-category="Iconic-Cities">
+        <div><i class="fa-solid fa-sailboat"></i></div>
+        <p>Boats</p>
+      </div>
+    </a>
+    <a href="/listings/filter/15">
+      <div class="filter" id="filter-mountains" data-category="Mountains">
+        <div><i class="fa-solid fa-gamepad"></i></div>
+        <p>Play</p>
+      </div>
+    </a>
+    <a href="/listings/filter/16">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-tower-observation"></i></div>
+        <p>Towers</p>
+      </div>
+    </a>
+    <a href="/listings/filter/17">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-key"></i></div>
+        <p>Key</p>
+      </div>
+    </a>
+    <a href="/listings/filter/18">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-stroopwafel"></i></div>
+        <p>Desert</p>
+      </div>
+    </a>
+    <a href="/listings/filter/19">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-guitar"></i></div>
+        <p>pianos</p>
+      </div>
+    </a>
+    <a href="/listings/filter/20">
+      <div class="filter" id="filter-all" data-category="All">
+        <div><i class="fa-solid fa-kitchen-set"></i></div>
+        <p>Kitchens</p>
+      </div>
+    </a>
+     
+    <div class="right_img_button" id="slideButton">
+      <i class="fa-solid fa-angle-right"></i>
+    </div>
+     
+     
+</div>
+<div class="tax-toggle me-auto">
+  <div class="form-check-reverse form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+  </div>
+</div>
+</div>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for (let listing of allListings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col listing-card">
+          <div class="imgHovers mb-2" style="box-shadow: 10px 10px 10px rgba(0,0,0, 0.45);">
+            <!-- <img src="/images/heart.png" class="" id="heart" alt="Heart"/> -->
+            <div class="like-button" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+              <div class="heart-bg">
+                <div class="heart-icon"></div>
+              </div>
+            </div>
+            <img src="<%= listing.image.url %>" class="card-img-top imgHover" id="imgh" alt="listing_image" style="height: 20rem" />
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <b>
+                <%= listing.title %>
+              </b><br>
+              <span class="price-info">
+                &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+              </span>
+              <span class="tax-info" style="display: none;"> <!-- Initial display is set to none -->
+                &nbsp;
+                <i class="rs-sign"><b> &#8377;<%= (listing.price * 1.18).toLocaleString("en-IN") %></b>
+                  &nbsp; +18% total after taxes
+                </i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </a>
+    <% } %>
+</div>
+ 
+<!-- <script>
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+        taxSwitch.addEventListener("change", ()=>{
+        updatePriceDisplay(taxSwitch.checked);
+             
+        });
+
+        function updatePriceDisplay(isTaxSwitchOn){
+            let priceInfoElements = document.querySelectorAll(".price-info");
+
+            priceInfoElements.forEach((priceInfo) =>{
+                const basePrice = parseFloat(priceInfo.dataset.basePrice);
+                const totalPrice = isTaxSwitchOn ? calculateTotalPrice(basePrice) : basePrice;
+
+                priceInfo.innerHTML = `&#8377; ${totalPrice.toLocalString("en-IN")} /night`;
+
+                if(isTaxSwithOn){
+                    priceINFO.innerHTML += `<i class="tax">&nbsp;with 18% GST </i>`;
+                }
+            }) 
+
+        }
+
+        function calculateTotalPrice(basePrice) {
+            const gstPercentage = 18;
+            const gstAmount = (basePrice * gstPercentage) / 100;
+            const totalPrice = basePrice + gstAmount;
+            return totalPrice.toLocaleString("en-IN");
+        }
+
+         
+        // let taxInfo = document.getElementsByClassName("tax-info");
+        // for(info of taxInfo){
+        //     if(info.style.display != "inline"){
+        //         info.style.display = "inline";
+        //     }else{
+        //         info.style.display = "none";
+        //     }
+        // }
+         
+    
+</script>
+      -->
+    <script>
+        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+        taxSwitch.addEventListener("click", () => {
+          let taxInfoElements = document.querySelectorAll(".tax-info");
+          let priceInfoElements = document.querySelectorAll(".price-info");
+    
+          for (let i = 0; i < taxInfoElements.length; i++) {
+            if (taxSwitch.checked) {
+              taxInfoElements[i].style.display = "inline";
+              priceInfoElements[i].style.display = "none";
+            } else {
+              taxInfoElements[i].style.display = "none";
+              priceInfoElements[i].style.display = "inline";
+            }
+          }
+        });
+
+        const likeButtons = document.querySelectorAll(".like-button");
+
+        // Iterate through each like button and add a click event listener
+            likeButtons.forEach(likeButton => {
+            const heartIcon = likeButton.querySelector(".heart-icon");
+            const likesAmountLabel = likeButton.nextElementSibling; // Assumes likes-amount is a sibling element
+
+            // Prevent the default click behavior on the heart icon
+            heartIcon.addEventListener("click", (event) => {
+            event.preventDefault();
+            });
+
+          likeButton.addEventListener("click", () => {
+          heartIcon.classList.toggle("liked");
+          likesAmountLabel.innerHTML = parseInt(likesAmountLabel.innerHTML) + 1;
+        });
+      }); 
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // Get all filter elements
+    const filters = document.querySelectorAll('.filter');
+
+    // Add click event listener to each filter
+    filters.forEach(filter => {
+      filter.addEventListener('click', function () {
+        // Remove 'selected-filter' class from all filters
+        filters.forEach(f => f.classList.remove('selected-filter'));
+
+        // Add 'selected-filter' class to the clicked filter
+        this.classList.add('selected-filter');
+      });
+    });
+  });
+
+  // filters icon -----------------------------------
+const filters = document.querySelectorAll(".filter");
+// Function to apply styles based on the selected filter
+function applyStyles(selectedFilter) {
+	// Remove 'selected' class from all filters
+	filters.forEach((f) => f.classList.remove("selectedFilter"));
+	// Add 'selected' class to the clicked filter
+	const selectedElement = document.querySelector("." + selectedFilter);
+	if (window.location.pathname === "/listings") {
+		filters[0].classList.add("selectedFilter");
+		return;
+	}
+	if (selectedElement) {
+		selectedElement.classList.add("selectedFilter");
+	}
+}
+
+// Add click event listener to each filter
+filters.forEach((filter) => {
+	filter.addEventListener("click", function () {
+		const element = this.classList[1];
+		console.log(element);
+		// Store the selected filter in localStorage
+		localStorage.setItem("selectedFilter", element);
+		// Apply styles
+		applyStyles(element);
+	});
+});
+// On page load, check if a filter was previously selected and apply styles
+const storedFilter = localStorage.getItem("selectedFilter");
+if (storedFilter) {
+	applyStyles(storedFilter);
+}
+
+
+// filters slide button add-----------------------------------
+let filtersBox = document.querySelector("#filters");
+let buttonSlide = document.querySelectorAll("#slideButton");
+
+buttonSlide.forEach((button) => {
+	button.addEventListener("click", () => {
+		const direction = button.className == "left_img_button" ? -1 : 1;
+		const scrollImg = direction * (filtersBox.clientWidth - 100);
+		filtersBox.scrollBy({ left: scrollImg, behavior: "smooth" });
+	});
+});
+
+filtersBox.addEventListener("scroll", () => {
+		buttonSlide[0].style.display = filtersBox.scrollLeft <= 0 ? "none" : "flex"
+		buttonSlide[1].style.display = filtersBox.scrollLeft >= (filtersBox.scrollWidth-filtersBox.clientWidth-5) ? "none" : "flex"
+		console.log(filtersBox.scrollWidth)
+		console.log(filtersBox.scrollWidth-filtersBox.clientWidth)
+})
+
+</script>    
+
+
+
+    
+    
+ 
+ 

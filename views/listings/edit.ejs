@@ -1,0 +1,181 @@
+<%  layout("/layouts/boilerplate") %> 
+
+<div class="row mt-3"> 
+    <div class="col-9 offset-2"> 
+   <h3>Edit your Listings</h3>
+    <form method="post" action="/listings/<%=listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+            <lable for="title" class="form-lable">Title</lable>
+
+            <input name="listing[title]"  value="<%= listing.title %>" type="text"   class="form-control"  required>
+            <div class="valid-feedback">Title looks good!</div>
+            
+
+        </div>
+
+        <div  class="mb-3">
+            <lable for="description" class="form-lable">Description</lable>
+            <textarea name="listing[description]"   class="form-control"   required><%= listing.description %>   </textarea>
+            
+            <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <div  class="mb-3">
+             Original Listing Image <br>
+             <img  class="listingImg" src="<%= originalImageUrl %> " >
+        </div>
+
+        <div  class=" row mb-3">
+            <div class="col-10">
+                <lable for="image" class="form-lable">Upload new Image</lable>
+                <input  name="listing[image]  " type="file" class="form-control border border-black border-opacity-50" id="verify-img">
+                <p id="errorContainer"></p>
+
+            </div>
+            <div class="col-2">
+                <label class="form-control border border-white" style="margin-left: -15px;" for="verify">Verify</label>
+                <input type="checkbox" id="verify" checked class="form-btn btn ms-2 border border-black border-opacity-50" required
+                  style="height: 25px; width:25px;">
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div  class="mb-3"> 
+                    <lable for="price" class="form-lable">Price</lable>
+                    <input name="listing[price]"   value="<%= listing.price %>"  type="number"   class="form-control" required>
+                    
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+
+
+            </div>
+
+            <div class="mb-3 col-md-8">
+                <label for="category" class="form-label">Category</label>
+                <select name="listing[category]" class="form-select">
+                  <option value="1">Trending</option>
+                  <option value="2">Rooms</option>
+                  <option value="3">Cities</option>
+                  <option value="4">Mountains</option>
+                  <option value="5">Mansions</option>
+                  <option value="6">Beach</option>
+                  <option value="7">Camping</option>
+                  <option value="8">Ski</option>
+                  <option value="9">Farms</option>
+                  <option value="10">Arctic</option>
+                  <option value="11">Design</option>
+                  <option value="12">Caves</option>
+                  <option value="13">Tree</option>
+                  <option value="14">Boats</option>
+                  <option value="15">Play</option>
+                  <option value="16">Towers</option>
+                  <option value="17">Key</option>
+                  <option value="18">Desert</option>
+                  <option value="19">Pianos</option>
+                  <option value="20">Kitchens</option>
+                </select>
+                <div class="invalid-feedback">Please select a category</div>
+              </div>
+
+
+            <div class="col-md-8">
+                <div   class="mb-3">
+                    <lable for="country" class="form-lable">Country</lable>
+        
+                    <input name="listing[country]"   value="<%= listing.country %>"  type="text"   class="form-control" required>
+                    
+                    <div class="invalid-feedback">Country should be valid</div> 
+                </div>
+        
+
+
+            </div>
+            
+    
+             
+
+
+
+        </div>
+
+         
+        <div   class="mb-3">
+            <lable for="loaction" class="form-lable">Location</lable>
+            <input name="listing[location]"  value="<%= listing.location %>"  type="text"   class="form-control" required>
+            
+            <div class="invalid-feedback">Please enter a location</div>
+        </div>
+        
+       
+        
+       
+        
+        
+        <button class="btn btn-dark edit-btn mt-3">Edit</button>
+
+
+
+    </form>
+    <br/><br/>
+
+    
+    </div>
+</div>
+
+<script>
+    let varify = document.getElementById("verify");
+    const fileInput = document.getElementById("verify-img");
+    const errorContainer = document.getElementById("errorContainer");
+
+    fileInput.addEventListener("click", function () {
+      if (fileInput.files.length == 1) {
+        varify.checked = false;
+        return;
+      }
+    });
+    varify.addEventListener("click", function () {
+      const maxSize = 100 * 1024; // 100KB in bytes
+      console.log("click button");
+
+      if (fileInput.files.length === 0) {
+        errorContainer.innerText = "Please select an image to upload.";
+        errorContainer.style.color = "red";
+        if (errorContainer.innerText != "") {
+          varify.checked = false;
+        }
+        return;
+      }
+
+      const file = fileInput.files[0];
+      if (file.size > maxSize) {
+        errorContainer.innerText = "File size exceeds the limit (100KB).";
+        errorContainer.style.color = "red";
+        if (errorContainer.innerText != "") {
+          varify.checked = false;
+        }
+        return;
+      }
+
+      errorContainer.innerText = "";
+    });
+    const addButton = document.getElementById('addButton');
+    let isFirstClick = true;
+
+    addButton.addEventListener('click', function (event) {
+      if (isFirstClick) {
+        // Perform the desired action on the first click (e.g., submit the form)
+        // You can replace this with the action you want to take on the first click
+        // For example: document.querySelector('form').submit();
+        isFirstClick = false; // Disable further clicks
+      } else {
+        event.preventDefault(); // Prevent subsequent clicks from taking any action
+      }
+    });
+  </script>
+ 
+
+     
+ 
+ 
